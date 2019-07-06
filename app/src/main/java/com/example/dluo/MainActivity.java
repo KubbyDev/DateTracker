@@ -3,6 +3,8 @@ package com.example.dluo;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.google.zxing.integration.android.IntentIntegrator;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -12,5 +14,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Test
         Network.test(this);
+
+        new IntentIntegrator(this).initiateScan();
     }
 }
