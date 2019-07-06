@@ -1,0 +1,16 @@
+
+scanner le CB du produit avec la camera du telephone
+
+enregistrer le produit dans la BD interne du telephone
+
+entrer la DLUO a la main 
+
+indiquer emplacement du produit (frigo, palcard, sous-sol...)
+
+
+communiquer en BT avec un module attaché au produit
+
+La module comporte une led rouge qui s'allume :
+- sur demande pour retrouver le produit
+- clignotante lorsque la DLUO est proche
+- clignotante rapide lorsque la DLUO est depassée

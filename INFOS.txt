@@ -1,0 +1,9 @@
+
+
+base de donnée des produits
+
+
+https://fr.openfoodfacts.org/produit/code_barre
+
+exemple
+https://fr.openfoodfacts.org/produit/5601029004014/atum-posta-em-oleo-vegetal-bom-petisco
