@@ -1,4 +1,6 @@
 
+STEP 1
+
 scanner le CB du produit avec la camera du telephone
 
 enregistrer le produit dans la BD interne du telephone
@@ -7,6 +9,8 @@ entrer la DLUO a la main
 
 indiquer emplacement du produit (frigo, palcard, sous-sol...)
 
+
+STEP 2
 
 communiquer en BT avec un module attaché au produit
 
