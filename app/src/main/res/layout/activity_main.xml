@@ -15,4 +15,16 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/barcode"
+        android:name="com.google.android.gms.samples.vision.barcodereader.BarcodeCapture"
+        app:gvb_auto_focus = "true"
+        app:gvb_code_format = "all_format"
+        app:gvb_flash = "false"
+    >
+    </fragment>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
