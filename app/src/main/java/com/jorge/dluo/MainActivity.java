@@ -19,5 +19,12 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra("PRODUCT_CODE", result);
             startActivity(intent);
         });
+
+        /*
+        //Direct test
+        Intent intent = new Intent(MainActivity.this, ProductInfoDisplay.class);
+        intent.putExtra("PRODUCT_CODE", "5601029004014");
+        startActivity(intent);
+        */
     }
 }

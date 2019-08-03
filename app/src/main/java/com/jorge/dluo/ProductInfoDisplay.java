@@ -1,12 +1,22 @@
 package com.jorge.dluo;
 
 import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
 
-import com.jorge.dluo.network.INetworkResponseHandler;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.text.Html;
+import android.webkit.WebView;
+import android.widget.ImageView;
+import android.widget.TextView;
+
 import com.jorge.dluo.network.Network;
 
-import org.sufficientlysecure.htmltextview.HtmlTextView;
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 
 public class ProductInfoDisplay extends AppCompatActivity {
 
@@ -17,20 +27,25 @@ public class ProductInfoDisplay extends AppCompatActivity {
         setContentView(R.layout.activity_product_info_display);
 
         System.out.println("\n\n\nOPENED HTML VIEW\n\n\n");
-        System.out.println(getIntent().getStringExtra("PRODUCT_CODE"));
+        String readCode = getIntent().getStringExtra("PRODUCT_CODE");
 
-        displayHtml(
-                "<h2>An Unordered HTML List</h2>\n" +
-                "<ul>\n" +
-                "  <li>Coffee</li>\n" +
-                "  <li>Tea</li>\n" +
-                "  <li>Milk</li>\n" +
-                "</ul>");
-
-        new Network(this).getProductPage("5601029004014", this::displayHtml);
+        new Network(this).getProductPage(readCode, this::displayInfo);
     }
 
-    public void displayHtml(String htmlText) {
-        ((HtmlTextView) findViewById(R.id.html_display)).setHtml(htmlText);
+    public void displayInfo(String rawResponse) {
+
+        //Title
+        String title = rawResponse.substring(rawResponse.indexOf("<title>")+7, rawResponse.indexOf("</title>"));
+        ((TextView) findViewById(R.id.title)).setText(title);
+
+        //Image
+        new Thread(() -> {
+            try {
+                String temp = rawResponse.substring(rawResponse.indexOf("<meta property=\"og:image\" content=\"")+35);
+                String url = temp.substring(0, temp.indexOf("\">"));
+                Bitmap image = BitmapFactory.decodeStream((InputStream)new URL(url).getContent());
+                runOnUiThread(() -> ((ImageView) findViewById(R.id.image)).setImageBitmap(image));
+            } catch (Exception e) { e.printStackTrace(); }
+        }).start();
     }
 }
