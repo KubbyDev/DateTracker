@@ -15,14 +15,14 @@ import xyz.belvi.mobilevisionbarcodescanner.BarcodeRetriever;
 
 public class BarcodeScanner implements BarcodeRetriever {
 
-    private BarcodeScanResultHandler onBarcodeScannedHandler;
+    private IBarcodeScanResultHandler onBarcodeScannedHandler;
     private AppCompatActivity activity;
 
     public BarcodeScanner(AppCompatActivity fromActivity) {
         activity = fromActivity;
     }
 
-    public void scanBarcode(BarcodeScanResultHandler onBarcodeScanned) {
+    public void scanBarcode(IBarcodeScanResultHandler onBarcodeScanned) {
 
         onBarcodeScannedHandler = onBarcodeScanned;
 

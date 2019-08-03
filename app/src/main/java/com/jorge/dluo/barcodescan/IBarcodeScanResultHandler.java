@@ -1,5 +1,5 @@
 package com.jorge.dluo.barcodescan;
 
-public interface BarcodeScanResultHandler {
+public interface IBarcodeScanResultHandler {
     void onBarcodeScanned(final String result);
 }
