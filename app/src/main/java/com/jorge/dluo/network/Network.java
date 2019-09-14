@@ -8,16 +8,19 @@ public class Network {
 
     private android.content.Context context;
 
-    public Network(android.content.Context context) {
-        this.context = context;
-    }
+    public Network(android.content.Context context) { this.context = context; }
 
+    /** Sends an HTTP request to openfoodfacts with the provided barcode
+     * <br> When the response is received, calls the
+     * callback (responseHandler) with the response as parameter */
     public void getProductPage(String code, INetworkResponseHandler responseHandler) {
 
         RequestQueue queue = Volley.newRequestQueue(context);
+        //Constructs the URL of the request
         String url = "https://fr.openfoodfacts.org/produit/" + code + "/";
 
-        // Request a string response from the provided URL.
+        //Sets the handlers in case of success and in case of error
+        //In case of success, calls the callback, in case of error, prints the error message
         StringRequest stringRequest = new StringRequest(com.android.volley.Request.Method.GET, url,
                 responseHandler::onProductPageReceived,
                 error -> System.out.println("\nError" + error.getMessage())
@@ -25,7 +28,7 @@ public class Network {
 
         System.out.println("Sending Http Request");
 
-        // Add the request to the RequestQueue.
+        //Adds the request to the queue (will be sent by volley)
         queue.add(stringRequest);
     }
 }
